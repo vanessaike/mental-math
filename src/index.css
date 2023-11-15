@@ -1,13 +1,147 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Sometype+Mono:wght@400;500&display=swap");
+
+:root {
+  --main-clr: #f2ffe9;
+  --btn-clr: #557c55;
+  --correct-clr: #a6cf98;
+  --incorrect-clr: #fa7070;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Sometype Mono", monospace;
+  font-weight: 500;
+  background-color: var(--main-clr);
+}
+
+main {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+li {
+  list-style: none;
+}
+
+/* GENERAL STYLES */
+.main-btn {
+  border: none;
+  background-color: var(--btn-clr);
+  color: var(--main-clr);
+  font-family: inherit;
+  padding: 1rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 2rem;
+  border-radius: 100vh;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.main-btn:hover {
+  background-color: #557c55c0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* INITIAL SCREEN */
+.intro-screen {
+  padding: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* GAME SCREEN */
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: 5rem;
+}
+
+.game-wrapper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.operation {
+  margin-bottom: 2rem;
+}
+
+.user-guess {
+  border: none;
+  padding: 1rem;
+  border-bottom: 1px solid var(--btn-clr);
+  font-family: inherit;
+  font-size: 3rem;
+  width: 13rem;
+  margin-bottom: 2rem;
+}
+
+/* RESULTS SCREEN */
+.results-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.operations-wrapper {
+  height: 50rem;
+  overflow-y: auto;
+}
+
+.operations {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.operation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 35rem;
+  min-height: 7rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.operation-correct {
+  background-color: var(--correct-clr);
+}
+
+.operation-incorrect {
+  background-color: var(--incorrect-clr);
+}
+
+.correct-answer {
+  font-size: 1.8rem;
+}
+
+/* SCORE */
+.score-wrapper {
+  margin-top: auto;
+  font-size: 2rem;
+  display: flex;
+  justify-content: end;
+  padding: 2.5rem;
 }
