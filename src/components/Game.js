@@ -1,8 +1,13 @@
 import { useState } from "react";
 import Button from "./Button";
 
-export default function Game({ setOperations }) {
-  const signs = ["+", "-", "*", "/"];
+export default function Game({
+  operations,
+  setOperations,
+  setIsPlaying,
+  setGameOver,
+}) {
+  const signs = ["+", "-", "*"];
   const [guess, setGuess] = useState("");
   const [operation, setOperation] = useState(generateOperation());
 
@@ -11,19 +16,24 @@ export default function Game({ setOperations }) {
   }
 
   function generateOperation() {
-    const randomSign = signs[Math.floor(Math.random() * 4)];
+    const randomSign = signs[Math.floor(Math.random() * 3)];
     return `${generateRandomNum()} ${randomSign} ${generateRandomNum()}`;
   }
 
   function handleFormSubmit(e) {
     e.preventDefault();
     if (!guess) return alert("please, make a guess");
-    setOperations((op) => [
-      ...op,
-      { operation, guess, correctAnswer: eval(operation) },
-    ]);
-    setOperation(generateOperation());
-    setGuess("");
+    if (operations.length >= 50) {
+      setGameOver(true);
+      setIsPlaying(false);
+    } else {
+      setOperations((op) => [
+        ...op,
+        { operation, guess, correctAnswer: eval(operation) },
+      ]);
+      setOperation(generateOperation());
+      setGuess("");
+    }
   }
 
   return (

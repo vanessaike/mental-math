@@ -8,18 +8,34 @@ function App() {
   const [operations, setOperations] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-
   return (
     <div className="App">
       <main>
-        {!isPlaying ? (
+        {!isPlaying && !gameOver ? (
           <Intro isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+        ) : isPlaying && !gameOver ? (
+          <Game
+            operations={operations}
+            setOperations={setOperations}
+            setIsPlaying={setIsPlaying}
+            setGameOver={setGameOver}
+          />
         ) : (
-          <Game setOperations={setOperations} />
+          <Results
+            operations={operations}
+            setOperations={setOperations}
+            setIsPlaying={setIsPlaying}
+            setGameOver={setGameOver}
+          />
         )}
-        <Results />
       </main>
-      {isPlaying ? <Score operations={operations} /> : null}
+      {isPlaying || gameOver ? (
+        <Score
+          operations={operations}
+          isPlaying={isPlaying}
+          gameOver={gameOver}
+        />
+      ) : null}
     </div>
   );
 }

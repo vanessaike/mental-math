@@ -145,3 +145,7 @@ li {
   justify-content: end;
   padding: 2.5rem;
 }
+
+.final-score {
+  color: var(--correct-clr);
+}
